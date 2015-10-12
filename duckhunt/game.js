@@ -7,13 +7,15 @@ function init() {
 	var img = new Image();
 	img.src = "duckhunt-background.gif";
 
-	ctx.drawImage(img, 0, 0, 600, 800);
+	// drawing the background image
+	ctx.drawImage(img, 0, 0, 512, 480);
 
-	// Draw Slice
-	//ctx.drawImage(img, 50, 50, 50, 50,
-	//	50, 50, 50, 50);
+	// slicing and drawing first bird
+	var birds = new Image();
+	birds.src = "duckhunt_various_sheet.png"
+	ctx.drawImage(birds, 42, 117, 38, 30, 175, 140, 80, 60);
 
-	// Draw frame
-//	ctx.drawImage(img, 0, 0);
+	// slicing and drawing second bird
+	ctx.drawImage(birds, 125, 120, 38, 30, 300, 100, 80, 60);
 
 }
