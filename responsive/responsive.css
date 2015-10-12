@@ -1,0 +1,71 @@
+/* First image */
+@media screen and (min-width: 1200px) {
+	.homer {
+		width: 166.5px;
+		height: 125px;
+		background: url("homer.jpg")0 0px;
+	}
+}
+
+/* Second image */
+@media screen and (max-width: 1200px) and (min-width: 1100px){
+	.homer {
+		width: 166.5px;
+		height: 125px;
+		background: url("homer.jpg") -166.5px 0;
+	}
+}
+
+/* Third image */
+@media screen and (max-width: 1100px) and (min-width: 1000px){
+	.homer {
+		width: 166.5px;
+		height: 125px;
+		background: url("homer.jpg") 0 -125px;
+	}
+}
+
+/* Fourth image */
+@media screen and (max-width: 1000px) and (min-width: 900px){
+	.homer {
+		width: 166.5px;
+		height: 125px;
+		background: url("homer.jpg") -166.5px -125px;
+	}
+}
+
+/* Fifth image */
+@media screen and (max-width: 900px) and (min-width: 800px){
+	.homer {
+		width: 166.5px;
+		height: 125px;
+		background: url("homer.jpg") 0 -250px;
+	}
+}
+
+/* Sixth image */
+@media screen and (max-width: 800px) and (min-width: 700px){
+	.homer {
+		width: 166.5px;
+		height: 125px;
+		background: url("homer.jpg") -166.5px -250px;
+	}
+}
+
+/* Seventh image */
+@media screen and (max-width: 700px) and (min-width: 600px){
+	.homer {
+		width: 166.5px;
+		height: 125px;
+		background: url("homer.jpg") 0 -375px;
+	}
+}
+
+/* Eighth image */
+@media screen and (max-width: 600px){
+	.homer {
+		width: 166.5px;
+		height: 125px;
+		background: url("homer.jpg") -166.5px -375px;
+	}
+}
