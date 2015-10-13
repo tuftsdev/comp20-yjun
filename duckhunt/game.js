@@ -5,6 +5,15 @@ function init() {
 	// that DO support <canvas>
 
 	var img = new Image();
+	img.addEventListener("load", function() {
+		ctx.drawImage(img, 0, 0, 512, 480);
+		var birds = new Image();
+		birds.src = "duckhunt_various_sheet.png"
+		ctx.drawImage(birds, 42, 117, 38, 30, 175, 140, 80, 60);
+		ctx.drawImage(birds, 125, 120, 38, 30, 300, 100, 80, 60);
+	}, false);
+
+
 	img.src = "duckhunt-background.gif";
 
 	// drawing the background image
