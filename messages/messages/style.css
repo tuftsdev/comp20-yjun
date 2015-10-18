@@ -1,5 +1,7 @@
 p {
-	display: block;	
 	background-color: navy;
 	color: mediumspringgreen;
+	display: block;	
+	font-family: Courier;
+	margin: 5px;
 }
