@@ -5,10 +5,10 @@ function parse() {
 	console.log("YOOOO");
 
 
-
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		xmlhttp.open("GET", url,true );
+xmlhttp.open("GET", url,true );
 		xmlhttp.send();
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		
 		console.log(xmlhttp.response);
 		var myArr = JSON.parse(xmlhttp.responseText);
 		console.log("Done parsing?");
