@@ -10,14 +10,18 @@ function parse() {
 			var elem = document.getElementById("messages");
 			for (var count = 0; count < parsed.length; count++) {
 				elem.innerHTML += "<p>" + parsed[count]["content"] 
-					+ "    " + parsed[count]["username"] + "</p>";
+					+ "      " + 
+					"<h1>" + parsed[count]["username"] + "</h3>" 
+					+ "</p>";
 			}
 		}
 
 
 	}
 
+	//var url = "data.json";
+	var url = "http://messagehub.herokuapp.com/messages.json";
 	//asynchronous
-	xmlhttp.open("GET", "data.json", true);
+	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
 }
