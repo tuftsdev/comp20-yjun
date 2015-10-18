@@ -6,6 +6,8 @@ function parse() {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState === 4) {
 			console.log("CHEESE");
+			var parser = JSON.parse(xmlhttp.responseText);
+
 		}
 
 
@@ -14,11 +16,7 @@ function parse() {
 	//asynchronous
 	xmlhttp.open("GET", "data.json", true);
 	xmlhttp.send();
-	console.log(xmlhttp.responseText);
-/*
-		
-		var myArr = JSON.parse(xmlhttp.responseText);
-	
-	*/
+	console.log("YAY");
+
 
 }
