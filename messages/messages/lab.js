@@ -7,8 +7,8 @@ function parse() {
 		if (xmlhttp.readyState === 4) {
 			console.log("CHEESE");
 			var parser = JSON.parse(xmlhttp.responseText);
-			//console.log(parser);
-			console.log(xmlhttp.responseText);
+			console.log(parser);
+			//console.log(xmlhttp.responseText);
 		}
 
 
