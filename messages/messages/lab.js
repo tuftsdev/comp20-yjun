@@ -3,18 +3,22 @@ function parse() {
 
 	console.log("YOOOO");
 
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState === 4) {
+			console.log("CHEESE");
+		}
 
+
+	}
+
+	//asynchronous
 	xmlhttp.open("GET", "data.json", true);
 	xmlhttp.send();
 	console.log(xmlhttp.responseText);
-
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+/*
 		
 		var myArr = JSON.parse(xmlhttp.responseText);
-		console.log("Done parsing?");
-		console.log(myArr);
-	}
-
 	
+	*/
 
 }
