@@ -11,7 +11,7 @@ function parse() {
 			for (var count = 0; count < parsed.length; count++) {
 				elem.innerHTML += "<p>" + parsed[count]["content"] 
 					+ "      " + 
-					"<h1>" + parsed[count]["username"] + "</h1>" 
+					"<span>" + parsed[count]["username"] + "</span>" 
 					+ "</p>";
 			}
 		}
