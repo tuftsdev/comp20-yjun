@@ -11,8 +11,8 @@ function parse() {
 			//console.log(xmlhttp.responseText);
 
 			var elem = document.getElementById("messages");
-			for (var i = 0; i < parsed.length; count++) {
-				console.log(Object.keys(parsedObjects[count]));
+			for (var count = 0; count < parsed.length; count++) {
+				console.log(Object.keys(parsed[count]));
 
 			}
 		}
