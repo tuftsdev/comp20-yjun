@@ -11,7 +11,7 @@ function parse() {
 			for (var count = 0; count < parsed.length; count++) {
 				elem.innerHTML += "<p>" + parsed[count]["content"] 
 					+ "      " + 
-					"<h1>" + parsed[count]["username"] + "</h3>" 
+					"<h1>" + parsed[count]["username"] + "</h1>" 
 					+ "</p>";
 			}
 		}
@@ -19,8 +19,8 @@ function parse() {
 
 	}
 
-	//var url = "data.json";
-	var url = "http://messagehub.herokuapp.com/messages.json";
+	var url = "data.json";
+	//var url = "http://messagehub.herokuapp.com/messages.json";
 	//asynchronous
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
