@@ -6,7 +6,7 @@ function parse() {
 
 	xmlhttp.open("GET", "data.json", false);
 	xmlhttp.send();
-	console.log(xmlhttp.response);
+	console.log(xmlhttp.responseText);
 
 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 		
