@@ -3,9 +3,11 @@ function parse() {
 	var url = "data.json";
 	console.log("YOOOO");
 
-	var myArr = JSON.parse(xmlhttp.response.Text);
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		var myArr = JSON.parse(xmlhttp.response.Text);
+		console.log("Done parsing?");
+		console.log(myArr);
+	}
 	
-	console.log("Done parsing?");
-	console.log(myArr);
 
 }
