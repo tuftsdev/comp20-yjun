@@ -4,7 +4,7 @@ function parse() {
 	console.log("YOOOO");
 
 	xmlhttp.onreadystatechange = function() {
-		if (this.readyState === 4) {
+		if (xmlhttp.readyState === 4) {
 			console.log("CHEESE");
 		}
 
