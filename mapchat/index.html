@@ -3,15 +3,28 @@
 <html>
 
 <head>
-	<meta charset = "utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<title> MapChat </title>
-	<script src = "mapchat.js"> </script>
+	<script type = "text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"> </script>
 	<link rel = "stylesheet" href = "style.css" type = "text/css" />
+
+	<script>
+	var myLat = 0;
+	var myLng = 0;
+	var request = new XMLHttpRequest();
+	var me = new google.maps.LatLng(myLat, myLng);
+	console.log(me);
+
+	</script>
+
+
 </head>
+
+
 
 <body onload = "init()">
 	<h1>Map Chat </h1>
-	<div id = "title"> </div>
+	<div id = "map_canvas"> </div>
 </body>
 
 </html>
