@@ -12,13 +12,36 @@
 	var myLat = 0;
 	var myLng = 0;
 	var request = new XMLHttpRequest();
+	var myOptions = {
+		center: new google.maps.LatLng(myLat, myLng),
+		zoom: 13,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+
+	function sendLocToDatabase() {
+		// Variables for Database API
+		var request = new XMLHttpRequest();
+		var url = "https://secret-about-box.herokuapp.com/sendLocation";
+		request.open("POST", url, true);
+		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+		var send_str = "login=CalvinMoseley&lat=" + myLat.toString() + "&lng=" + myLng.toString() + "&message=yo";
+		request.send(send_str);
+
+		request.onreadystatechange = function() {
+			if (request.readyState == 4 && request.status == 200) {
+				alert(request.responseText);
+			}
+		}
+	}
+
+	function printLocation() {
+		elem = document.getElementById("location");
+		elem.innerHTML = "<p>" + myLat + ", " + myLng + "</p>";
+	}
 
 	function initMap() {
-		map = new google.maps.Map(document.getElementById("map_canvas"), {
-			center: new google.maps.LatLng(myLat, myLng),
-			zoom: 13,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		});
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		getMyLocation();
 	}
 
 	function getMyLocation() {
@@ -28,14 +51,12 @@
 				myLng = position.coords.longitude;
 				printLocation();	// just prints lat and lng to the page
 				initMap();			// prints the whole map
+				sendLocToDatabase();  //sends MY location to the Database API
 			});
 			console.log("Heya");
 	}
 
-	function printLocation() {
-		elem = document.getElementById("location");
-		elem.innerHTML = "<p>" + myLat + ", " + myLng + "</p>";
-	}
+	
 
 	</script>
 
@@ -44,7 +65,7 @@
 
 
 
-<body onload = "getMyLocation()">
+<body onload = "initMap()">
 	<h1>Map Chat </h1>
 	<div id = "map_canvas"> </div>
 	<div id = "location"> </div>
