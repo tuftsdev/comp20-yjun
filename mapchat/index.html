@@ -39,9 +39,21 @@
 		elem.innerHTML = "<p>" + myLat + ", " + myLng + "</p>";
 	}
 
-	function initMap() {
-		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-		getMyLocation();
+	
+ 	/* Copied from Tufts Dev example of Google Maps API */
+	function renderMap() {
+		var me = new google.maps.LatLng(myLat, myLng);
+		// update map and go there
+		map.panTo(me);
+		// Create a marker
+		var marker = new google.maps.Marker( {position:me, title: "Here I Am!"});
+		marker.setMap(map);
+
+		// Open info window on click of marker
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.setContent(marker.title);
+			infowindow.open(map, marker);
+		});
 	}
 
 	function getMyLocation() {
@@ -50,12 +62,16 @@
 				myLat = position.coords.latitude;
 				myLng = position.coords.longitude;
 				printLocation();	// just prints lat and lng to the page
-				initMap();			// prints the whole map
+				renderMap();			// prints the whole map
 				sendLocToDatabase();  //sends MY location to the Database API
 			});
 			console.log("Heya");
 	}
-
+	
+	function initMap() { //prints the whole map
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		getMyLocation();
+	}
 	
 
 	</script>
