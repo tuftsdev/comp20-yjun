@@ -11,9 +11,17 @@
 	<script>
 	var myLat = 0;
 	var myLng = 0;
-	var request = new XMLHttpRequest();
-	var me = new google.maps.LatLng(myLat, myLng);
-	console.log(me);
+
+
+	function getMyLocation() {
+			console.log("Hey");
+			navigator.geolocation.getCurrentPosition(function(position) {
+				console.log("YO");
+				console.log(position.coords.latitude);
+				console.log(position.coords.longitude);
+			});
+			console.log("Heya");
+	}
 
 	</script>
 
@@ -22,7 +30,7 @@
 
 
 
-<body onload = "init()">
+<body onload = "getMyLocation()">
 	<h1>Map Chat </h1>
 	<div id = "map_canvas"> </div>
 </body>
