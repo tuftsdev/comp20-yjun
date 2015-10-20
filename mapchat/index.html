@@ -16,11 +16,17 @@
 	function getMyLocation() {
 			console.log("Hey");
 			navigator.geolocation.getCurrentPosition(function(position) {
-				console.log("YO");
-				console.log(position.coords.latitude);
-				console.log(position.coords.longitude);
+				myLat = position.coords.latitude;
+				myLng = position.coords.longitude;
+				printLocation();
 			});
 			console.log("Heya");
+			printLocation();
+	}
+
+	function printLocation() {
+		elem = document.getElementById("location");
+		elem.innerHTML = "<p>" + myLat + ", " + myLng + "</p>";
 	}
 
 	</script>
@@ -33,6 +39,7 @@
 <body onload = "getMyLocation()">
 	<h1>Map Chat </h1>
 	<div id = "map_canvas"> </div>
+	<div id = "location"> </div>
 </body>
 
 </html>
