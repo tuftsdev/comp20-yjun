@@ -50,12 +50,12 @@
 		}
 	}
 
+
 	
  	/* Inspired by Tufts Dev example of Google Maps API */
 	function renderMap(login, lat, lng, message) {
 		var personLoc = new google.maps.LatLng(lat, lng);
-		// update map and go there
-		map.panTo(personLoc);
+		
 		// Create a marker
 		var marker = new google.maps.Marker(
 		{
@@ -66,11 +66,15 @@
 		console.log("Before info window")
 		// Open info window on click of marker
 		
+		var infowindow = new google.maps.InfoWindow( {
+			content: "MASSAGE"
+		})
+
 		//info window stuff doesnt work now....
-		/*google.maps.event.addListener(marker, 'click', function() {
+		marker.addListener(marker, 'click', function() {
 			infowindow.setContent(marker.title);
 			infowindow.open(map, marker);
-		});*/
+		});
 	}
 
 	function getMyLocation() {
@@ -78,9 +82,12 @@
 			navigator.geolocation.getCurrentPosition(function(position) {
 				myLat = position.coords.latitude;
 				myLng = position.coords.longitude;
-				printLocation();	// just prints lat and lng to the page
-				renderMap();			// prints the whole map
+			//	printLocation();	// just prints lat and lng to the page
 				sendLocToDatabase();  //sends MY location to the Database API
+				// update map and go there
+
+				var myLoc = new google.maps.LatLng(myLat, myLng)
+				map.panTo(myLoc);
 			});
 			console.log("Heya");
 	}
