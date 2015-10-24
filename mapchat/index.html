@@ -84,11 +84,23 @@ README
 			+ 'I have successfully logged in!' 
 			+ '</h1>'
 			+ '</div>';
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
+		});	
 		var meImage = 'fatcat.jpg';
 		var meMarker = new google.maps.Marker({
 			position: me,
-			icon: meImage
+			icon: meImage,
+			title: "MyLocation"
 		});
+
+		marker.setMap(map);
+
+		//info window stuff doesnt work now....
+		marker.addListener('click', function() {
+			infowindow.open(map, marker);
+		});
+
 
 	}
 
@@ -111,7 +123,7 @@ README
 
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString
-		})
+		});
 
 		// Create a marker
 		var marker = new google.maps.Marker(
