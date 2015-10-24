@@ -84,6 +84,12 @@ README
 			+ 'I have successfully logged in!' 
 			+ '</h1>'
 			+ '</div>';
+		var meImage = 'fatcat.jpg';
+		var meMarker = new google.maps.Marker({
+			position: me,
+			icon: meImage
+		});
+
 	}
 
 	
@@ -133,7 +139,7 @@ README
 			//	printLocation();	// just prints lat and lng to the page
 				sendLocToDatabase();  //sends MY location to the Database API
 				// update map and go there
-
+				renderMe();
 				var myLoc = new google.maps.LatLng(myLat, myLng)
 				map.panTo(myLoc);
 			});
