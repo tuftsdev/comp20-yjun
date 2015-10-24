@@ -1,3 +1,24 @@
+/*
+README 
+	Things To Do:
+	- Make InfoWindow pop up for everyone
+	- Have a separate function that renders map/creates infowindow for MY location
+		and has a unique icon for MY location
+	- Make a function to calculate the distance of other people to my location
+	- Clean up code
+
+
+
+*/
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 
 <html>
@@ -11,6 +32,7 @@
 	<script>
 	var myLat = 0;
 	var myLng = 0;
+	var myName = "CalvinMoseley";
 	var request = new XMLHttpRequest();
 	var myOptions = {
 		center: new google.maps.LatLng(myLat, myLng),
@@ -19,7 +41,7 @@
 	};
 	var jsondata;
 
-
+	
 
 	function printLocation() {
 		elem = document.getElementById("location");
@@ -51,31 +73,57 @@
 	}
 
 
+
+	function renderMe() {
+		var me = new google.maps.LatLng(myLat, myLng);
+		var contentString = '<div id = "content">' 
+			+ '<h1 id = "Login">Login Name: ' 
+			+ myName 
+			+ '</h1>'
+			+ '<h1 id = "Message"> Message: '
+			+ 'I have successfully logged in!' 
+			+ '</h1>'
+			+ '</div>';
+	}
+
 	
  	/* Inspired by Tufts Dev example of Google Maps API */
 	function renderMap(login, lat, lng, message) {
 		var personLoc = new google.maps.LatLng(lat, lng);
 		
+		var contentString = '<div id = "content">' 
+			+ '<h1 id = "Login">Login Name: ' 
+			+ login 
+			+ '</h1>'
+			+ '<h1 id = "Message"> Message: '
+			+ message 
+			+ '</h1>'
+			+ '<h1 id = "Miles"> Miles: '
+			+ 10000000
+			+ '</h1>'
+			+ '</div>';
+
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
+		})
+
 		// Create a marker
 		var marker = new google.maps.Marker(
 		{
 			position: personLoc, 
 			title: login
 		});
+
 		marker.setMap(map);
-		console.log("Before info window")
-		// Open info window on click of marker
-		
-		var infowindow = new google.maps.InfoWindow( {
-			content: "MASSAGE"
-		})
 
 		//info window stuff doesnt work now....
-		marker.addListener(marker, 'click', function() {
-			infowindow.setContent(marker.title);
+		marker.addListener('click', function() {
 			infowindow.open(map, marker);
 		});
 	}
+
+
+
 
 	function getMyLocation() {
 			console.log("Hey");
