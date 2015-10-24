@@ -94,11 +94,11 @@ README
 			title: "MyLocation"
 		});
 
-		marker.setMap(map);
+		meMarker.setMap(map);
 
 		//info window stuff doesnt work now....
-		marker.addListener('click', function() {
-			infowindow.open(map, marker);
+		meMarker.addListener('click', function() {
+			infowindow.open(map, meMarker);
 		});
 
 
@@ -107,6 +107,7 @@ README
 	
  	/* Inspired by Tufts Dev example of Google Maps API */
 	function renderMap(login, lat, lng, message) {
+		if (login == myName) {renderMe();}
 		var personLoc = new google.maps.LatLng(lat, lng);
 		
 		var contentString = '<div id = "content">' 
@@ -151,7 +152,6 @@ README
 			//	printLocation();	// just prints lat and lng to the page
 				sendLocToDatabase();  //sends MY location to the Database API
 				// update map and go there
-				renderMe();
 				var myLoc = new google.maps.LatLng(myLat, myLng)
 				map.panTo(myLoc);
 			});
