@@ -10,7 +10,8 @@ body {
 
 #title {
 	font-family: 'Rock Salt', cursive;
-	font-size: 20px;	
+	font-size: 30px;	
+	font-style: bold;
 }
 
 #map_canvas {

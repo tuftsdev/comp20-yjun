@@ -52,7 +52,6 @@ README
 
 		request.onreadystatechange = function() {
 			if (request.readyState == 4 && request.status == 200) {
-				// alert(request.responseText);
 				var jsondata = JSON.parse(request.responseText);
 				for (var count = 0; count < jsondata.length; count++) {
 					renderMap(jsondata[count]["login"],
@@ -107,7 +106,6 @@ README
 		// My custom Image 
 		var meImage = 'whale.png';
 
-		alert(meImage);
 		var meMarker = new google.maps.Marker({
 			position: me,
 			icon: meImage,
