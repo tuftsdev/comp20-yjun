@@ -82,7 +82,7 @@ README
 		var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(toRad(otherLat)) * Math.cos(toRad(myLat)) * Math.sin(dLon/2) * Math.sin(dLon/2);
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 		var d = R * c;
-		//alert(d); 
+		return d;
 	}
 
 	/*Converts from km to miles*/
@@ -102,10 +102,13 @@ README
 			+ 'I have successfully logged in!' 
 			+ '</h1>'
 			+ '</div>';
+
 		var infowindow = new google.maps.InfoWindow({
 			content: '<div id = "info_window">' +contentString +
 				'</div>'
 		});	
+
+		alert(contentString);
 
 		// My custom Image 
 		var meImage = {
@@ -133,11 +136,11 @@ README
 	function renderMap(login, lat, lng, message) {
 		if (login == myName) {
 			renderMe();
+			return;
 		}
-
 		var personLoc = new google.maps.LatLng(lat, lng);
 		var dist_from_me = find_distance(lat, lng);
-		
+
 		var contentString = '<div id = "content">' 
 			+ '<h1 id = "Login">Login Name: ' 
 			+ login 
