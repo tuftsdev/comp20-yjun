@@ -1,13 +1,9 @@
 /*
 README 
 	Things To Do:
-	- Make unique icon for MY location
-	- RenderME doesn't really work
-	- Make a function to calculate the distance of other people to my location
-	- Clean up code
-
-
-
+	- Make my icon/myself show up....
+	- Make InfoWindow look less hideous
+	- Do ReadMe
 */
 
 
@@ -108,14 +104,10 @@ README
 				'</div>'
 		});	
 
-		alert(contentString);
-
 		// My custom Image 
-		var meImage = {
-			url: 'whale.png'
-			//size: new google.maps.Size(5, 5),
-		};
+		var meImage = 'whale.png';
 
+		alert(meImage);
 		var meMarker = new google.maps.Marker({
 			position: me,
 			icon: meImage,
