@@ -26,11 +26,11 @@ README
 <head>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<title> MapChat </title>
-	<script type = "text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"> </script>
 	<link rel = "stylesheet" href = "style.css" type = "text/css" />
 	<link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css' />
 
-	<script>
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=true" type="text/javascript"> </script>
+	<script type = "text/javascript">
 	var myLat = 0;
 	var myLng = 0;
 	var myName = "CalvinMoseley";
@@ -56,7 +56,7 @@ README
 		var url = "https://secret-about-box.herokuapp.com/sendLocation";
 		request.open("POST", url, true);
 		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
-		var send_str = "login=CalvinMoseley&lat=" + myLat.toString() + "&lng=" + myLng.toString() + "&message=yo";
+		var send_str = "login=CalvinMoseley&lat=" + myLat.toString() + "&lng=" + myLng.toString() + "&message=yoooo";
 		request.send(send_str);
 
 		request.onreadystatechange = function() {
