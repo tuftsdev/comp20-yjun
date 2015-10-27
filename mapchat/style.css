@@ -14,10 +14,11 @@ body {
 
 #info_window {
 	font-family: 'Amatic SC', cursive;
-	color: navy;
+	color: black;
 	text-align: center;	
 	font-size: 10px;
 	border-style: dotted;
-	border-color: brown;
-	border-width:5px; 
+	border-color: #4A260B;
+	border-width:2px; 
+	background-color: deepskyblue;
 }
