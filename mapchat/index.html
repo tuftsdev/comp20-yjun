@@ -1,9 +1,8 @@
 /*
 README 
 	Things To Do:
-	- Make InfoWindow pop up for everyone
-	- Have a separate function that renders map/creates infowindow for MY location
-		and has a unique icon for MY location
+	- Make unique icon for MY location
+	- RenderME doesn't really work
 	- Make a function to calculate the distance of other people to my location
 	- Clean up code
 
@@ -42,7 +41,7 @@ README
 	};
 	var jsondata;
 
-	
+
 
 	function printLocation() {
 		elem = document.getElementById("location");
@@ -74,8 +73,30 @@ README
 	}
 
 
+	function toRad(x) {
+		return x * Math.PI / 180;
+	}
+
+	/* Uses Haversine Formula to find distance from my location*/
+	/* Reference: http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript */
+	function find_distance(otherLat, otherLng) {
+		var R = 6371;
+		var dLat = toRad(myLat - otherLat); 
+		var dLon = toRad(myLng - otherLng);
+		var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(toRad(otherLat)) * Math.cos(toRad(myLat)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		var d = R * c;
+		alert(d); 
+	}
+
+	/*Converts from km to miles*/
+	function toMiles(x)
+	{
+		return x / 1.609344;
+	}
 
 	function renderMe() {
+		console.log("RENDERING ME YAY");
 		var me = new google.maps.LatLng(myLat+1, myLng+1);
 		var contentString = '<div id = "content">' 
 			+ '<h1 id = "Login">Login Name: ' 
@@ -86,7 +107,8 @@ README
 			+ '</h1>'
 			+ '</div>';
 		var infowindow = new google.maps.InfoWindow({
-			content: contentString
+			content: '<div id = "info_window">' +contentString +
+				'</div>'
 		});	
 
 		// My custom Image 
@@ -113,8 +135,12 @@ README
 	
  	/* Inspired by Tufts Dev example of Google Maps API */
 	function renderMap(login, lat, lng, message) {
-		if (login == myName) {renderMe();}
+		if (login == myName) {
+			renderMe();
+		}
+
 		var personLoc = new google.maps.LatLng(lat, lng);
+		var dist_from_me = find_distance(lat, lng);
 		
 		var contentString = '<div id = "content">' 
 			+ '<h1 id = "Login">Login Name: ' 
@@ -123,8 +149,11 @@ README
 			+ '<h1 id = "Message"> Message: '
 			+ message 
 			+ '</h1>'
-			+ '<h1 id = "Miles"> Miles: '
-			+ 10000000
+			+ '<h1 id = "Distance"> Distance from me: '
+			+ toMiles(dist_from_me)
+			+ ' miles ('
+			+ dist_from_me 
+			+ ' km)'
 			+ '</h1>'
 			+ '</div>';
 
