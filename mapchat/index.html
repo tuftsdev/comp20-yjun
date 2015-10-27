@@ -1,10 +1,10 @@
-/*
+<!--
 README 
 	Things To Do:
 	- Make my icon/myself show up....
 	- Make InfoWindow look less hideous
 	- Do ReadMe
-*/
+-->
 
 
 
@@ -139,9 +139,9 @@ README
 			+ message 
 			+ '</h1>'
 			+ '<h1 id = "Distance"> Distance from me: '
-			+ toMiles(dist_from_me).toString()
+			+ toMiles(dist_from_me).toFixed(3)			/* Cutting floating point precision to 3 digits */
 			+ ' miles ('
-			+ dist_from_me.toString() 
+			+ dist_from_me.toFixed(3) 
 			+ ' km)'
 			+ '</h1>'
 			+ '</div>';
