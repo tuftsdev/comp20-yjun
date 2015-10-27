@@ -11,3 +11,9 @@ body {
 #map_canvas {
 	height: 100%;
 }
+
+#info_window {
+	font-family: 'Amatic SC', cursive;
+	color: pink;
+	text-align: center;	
+}

@@ -28,6 +28,7 @@ README
 	<title> MapChat </title>
 	<script type = "text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"> </script>
 	<link rel = "stylesheet" href = "style.css" type = "text/css" />
+	<link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
 
 	<script>
 	var myLat = 0;
@@ -75,7 +76,7 @@ README
 
 
 	function renderMe() {
-		var me = new google.maps.LatLng(myLat, myLng);
+		var me = new google.maps.LatLng(myLat+1, myLng+1);
 		var contentString = '<div id = "content">' 
 			+ '<h1 id = "Login">Login Name: ' 
 			+ myName 
@@ -87,7 +88,13 @@ README
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString
 		});	
-		var meImage = 'fatcat.jpg';
+
+		// My custom Image 
+		var meImage = {
+			url: 'fatcat.jpg'
+			size: new google.maps.Size(5, 5),
+		};
+
 		var meMarker = new google.maps.Marker({
 			position: me,
 			icon: meImage,
@@ -123,7 +130,8 @@ README
 			+ '</div>';
 
 		var infowindow = new google.maps.InfoWindow({
-			content: contentString
+			content: '<div id = "info_window">' +contentString +
+				'</div>'
 		});
 
 		// Create a marker
