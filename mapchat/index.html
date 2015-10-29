@@ -59,6 +59,7 @@ README
 							  jsondata[count]["lng"],
 							  jsondata[count]["message"]);
 				}
+				renderMe();
 			}
 		}
 	}
@@ -124,10 +125,6 @@ README
 	
  	/* Inspired by Tufts Dev example of Google Maps API */
 	function renderMap(login, lat, lng, message) {
-		if (login == myName) {
-			renderMe();
-			return;
-		}
 		var personLoc = new google.maps.LatLng(lat, lng);
 		var dist_from_me = find_distance(lat, lng);
 
