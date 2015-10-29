@@ -1,9 +1,10 @@
 <!--
 README 
 	Things To Do:
-	- Make my icon/myself show up....
-	- Make InfoWindow look less hideous
+	- Make InfoWindow look less hideous AND change fonts of info window stuffffff
+	- Make sure I did everything
 	- Do ReadMe
+	- Add gh pages to master
 -->
 
 
@@ -22,6 +23,7 @@ README
 	<link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'><link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>	
 	<script src="https://maps.googleapis.com/maps/api/js?sensor=true" type="text/javascript"> </script>
 	<script type = "text/javascript">
+
 	var myLat = 0;
 	var myLng = 0;
 	var myName = "CalvinMoseley";
@@ -104,12 +106,12 @@ README
 				'</div>'
 		});	
 
-		alert(contentString);
 
 		// My custom Image 
 		var meImage = {
-			//url: 'fatcat.jpg'
-			url: 'http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg'
+			url: 'scared_cat.png'
+			//size: new google.maps.Size(50,50),
+			//origin: new google.maps.Point(10, 10)
 		};
 
 		var meMarker = new google.maps.Marker({
@@ -118,6 +120,7 @@ README
 			title: "MyLocation"
 		});
 
+		meMarker.setMap(map);
 		meMarker.addListener('click', function() {
 			infowindow.open(map, meMarker);
 		});
