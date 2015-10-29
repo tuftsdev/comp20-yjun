@@ -89,7 +89,7 @@ README
 
 	function renderMe() {
 		console.log("RENDERING ME YAY");
-		var me = new google.maps.LatLng(myLat+1, myLng+1);
+		var me = new google.maps.LatLng(myLat, myLng+1==);
 		var contentString = '<div id = "content">' 
 			+ '<h1 id = "Login">Login Name: ' 
 			+ myName 
@@ -113,13 +113,9 @@ README
 			title: "MyLocation"
 		});
 
-		meMarker.setMap(map);
-
 		meMarker.addListener('click', function() {
 			infowindow.open(map, meMarker);
 		});
-
-
 	}
 
 	
@@ -157,7 +153,6 @@ README
 
 		marker.setMap(map);
 
-		//info window stuff doesnt work now....
 		marker.addListener('click', function() {
 			infowindow.open(map, marker);
 		});
