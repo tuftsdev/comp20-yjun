@@ -10,7 +10,7 @@ body {
 
 #title {
 	font-family: 'Anton', sans-serif;
-	font-size: 30px;	
+	font-size: 45px;	
 	font-style: bold;
 }
 
@@ -28,5 +28,5 @@ body {
 	border-width:4px; 
 	border-color: deepskyblue;
 	margin: 5px;
-	padding: 5px;
+	padding: 10px;
 }
