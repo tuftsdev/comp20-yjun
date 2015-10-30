@@ -9,6 +9,8 @@ body {
 }
 
 #title {
+	border-color: deepskyblue;
+	padding: 10px;
 	font-family: 'Anton', sans-serif;
 	font-size: 45px;	
 	font-style: bold;
