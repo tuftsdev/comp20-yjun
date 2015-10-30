@@ -1,16 +1,3 @@
-<!--
-README 
-	Things To Do:
-	- Make InfoWindow look less hideous AND change fonts of info window stuffffff
-	- Make sure I did everything
-	- Do ReadMe
-	- Add gh pages to master
--->
-
-
-
-
-
 <!DOCTYPE html>
 
 <html>
@@ -20,10 +7,11 @@ README
 	<title> MapChat </title>
 	<link rel = "stylesheet" href = "style.css" type = "text/css" />
 	<link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css' />
-	<link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'><link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>	
+	<link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
 	<script src="https://maps.googleapis.com/maps/api/js?sensor=true" type="text/javascript"> </script>
 	<script type = "text/javascript">
 
+	/* global variables */
 	var myLat = 0;
 	var myLng = 0;
 	var myName = "CalvinMoseley";
@@ -36,15 +24,16 @@ README
 	var jsondata;
 
 
-
-	function printLocation() {
+	/* Function used mainly for testing*/
+	function printMyLocation() {
 		elem = document.getElementById("location");
 		elem.innerHTML = "<p>" + myLat + ", " + myLng + "</p>";
 	}
 
 
+	/* Sends my data to the database, gets the data from the database, and parses accordingly */
 	function sendLocToDatabase() {
-		// Variables for Database API
+		/* Posting my data */
 		var request = new XMLHttpRequest();
 		var url = "https://secret-about-box.herokuapp.com/sendLocation";
 		request.open("POST", url, true);
@@ -52,6 +41,7 @@ README
 		var send_str = "login=CalvinMoseley&lat=" + myLat.toString() + "&lng=" + myLng.toString() + "&message=Don%27t%20you%20want%20to%20be%20my%20Lil%20Pony%3F";
 		request.send(send_str);
 
+		/* Parse recieved data */
 		request.onreadystatechange = function() {
 			if (request.readyState == 4 && request.status == 200) {
 				var jsondata = JSON.parse(request.responseText);
@@ -61,12 +51,13 @@ README
 							  jsondata[count]["lng"],
 							  jsondata[count]["message"]);
 				}
+				/* Last thing to do is put my special icon on the map */
 				renderMe();
 			}
 		}
 	}
 
-
+	/* Helper function to convert from degrees to radian */
 	function toRad(x) {
 		return x * Math.PI / 180;
 	}
@@ -83,14 +74,14 @@ README
 		return d;
 	}
 
-	/*Converts from km to miles*/
+	/* Converts from km to miles */
 	function toMiles(x)
 	{
 		return x / 1.609344;
 	}
 
+	/* Special function to put MY unique location, icon, and message on the map */
 	function renderMe() {
-		console.log("RENDERING ME YAY");
 		var me = new google.maps.LatLng(myLat, myLng);
 		var contentString = '<div id = "content">' 
 			+ '<h1 id = "Login">Login Name: ' 
@@ -107,11 +98,9 @@ README
 		});	
 
 
-		// My custom Image 
+		/* My custom icon */
 		var meImage = {
 			url: 'scared_cat.png'
-			//size: new google.maps.Size(50,50),
-			//origin: new google.maps.Point(10, 10)
 		};
 
 		var meMarker = new google.maps.Marker({
@@ -167,30 +156,25 @@ README
 	}
 
 
-
-
+	/* Uses geolocation API to get my current location */
 	function getMyLocation() {
-			console.log("Hey");
 			navigator.geolocation.getCurrentPosition(function(position) {
 				myLat = position.coords.latitude;
 				myLng = position.coords.longitude;
-			//	printLocation();	// just prints lat and lng to the page
-				sendLocToDatabase();  //sends MY location to the Database API
-				// update map and go there
+				sendLocToDatabase();  /* sends MY location to the Database API */
+				/* update map and go there */
 				var myLoc = new google.maps.LatLng(myLat, myLng)
 				map.panTo(myLoc);
 			});
-			console.log("Heya");
 	}
 	
-	function initMap() { //prints the whole map
+	/* Kind of like main function; initiates all necessary functions */
+	function initMap() { 
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		getMyLocation();
 	}
 	
-
 	</script>
-
 
 </head>
 

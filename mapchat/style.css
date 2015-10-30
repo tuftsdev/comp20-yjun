@@ -9,7 +9,7 @@ body {
 }
 
 #title {
-	font-family: 'Rock Salt', cursive;
+	font-family: 'Anton', sans-serif;
 	font-size: 30px;	
 	font-style: bold;
 }
@@ -19,8 +19,7 @@ body {
 }
 
 #info_window {
-	/*font-family: 'Amatic SC', cursive;*/
-	font-family: 'Raleway', sans-serif;	
+	font-family: 'Indie Flower', cursive;
 	color: white;
 	text-align: center;	
 	font-size: 10px;
@@ -29,4 +28,5 @@ body {
 	border-width:4px; 
 	border-color: deepskyblue;
 	margin: 5px;
+	padding: 5px;
 }
