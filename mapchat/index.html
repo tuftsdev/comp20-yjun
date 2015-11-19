@@ -169,10 +169,31 @@
 			});
 	}
 	
+	/* For Assignment 3 - Sending "Dummy" data to fill my map */
+	function setDummyData() {
+		var request = new XMLHttpRequest();
+		var url = "https://aqueous-beach-4194.herokuapp.com/sendLocation";
+		request.open("POST", url, true);
+
+		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+		var send_str = "login=mchow&lat=50&lng=48&message=Ming%20Was%20Here";
+		request.send(send_str);
+
+		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+		var send_str = "login=kaytea&lat=15&lng=39&message=Not%20in%20Kansas%20anymore";
+		request.send(send_str);
+
+		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+		var send_str = "login=mchow&lat=100&lng=85&message=Ming%20Was%20Here%20Also";
+		request.send(send_str);
+
+	}
+
 	/* Kind of like main function; initiates all necessary functions */
 	function initMap() { 
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		getMyLocation();
+		setDummyData();
 	}
 	
 	</script>
