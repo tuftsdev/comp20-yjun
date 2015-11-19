@@ -39,7 +39,7 @@
 		var url = "https://aqueous-beach-4194.herokuapp.com/sendLocation";
 		request.open("POST", url, true);
 		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
-		var send_str = "login=CalvinMoseley&lat=" + myLat.toString() + "&lng=" + myLng.toString() + "&message=Don%27t%20you%20want%20to%20be%20my%20Lil%20Pony%3F";
+		var send_str = "login=CalvinMoseley&lat=" + myLat.toString() + "&lng=" + myLng.toString() + "&message=BananananananaBATMAN";
 		request.send(send_str);
 
 		/* Parse recieved data */
@@ -183,6 +183,11 @@
 		request.open("POST", url, true);
 		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
 		var send_str = "login=kaytea&lat=15&lng=39&message=Not%20in%20Kansas%20anymore";
+		request.send(send_str);
+
+		request.open("POST", url, true);
+		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+		var send_str = "login=BenHarris&lat=23&lng=59&message=Where%20Am%20I";
 		request.send(send_str);
 
 		request.open("POST", url, true);
