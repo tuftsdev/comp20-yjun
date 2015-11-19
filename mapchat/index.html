@@ -163,6 +163,8 @@
 				myLat = position.coords.latitude;
 				myLng = position.coords.longitude;
 				sendLocToDatabase();  /* sends MY location to the Database API */
+				setDummyData();
+
 				/* update map and go there */
 				var myLoc = new google.maps.LatLng(myLat, myLng)
 				map.panTo(myLoc);
@@ -170,11 +172,10 @@
 	}
 	
 	/* For Assignment 3 - Sending "Dummy" data to fill my map */
-	function setDummyData() {
+	function setDummyData(send_str) {
 		var request = new XMLHttpRequest();
 		var url = "https://aqueous-beach-4194.herokuapp.com/sendLocation";
 		request.open("POST", url, true);
-
 		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
 		var send_str = "login=mchow&lat=50&lng=48&message=Ming%20Was%20Here";
 		request.send(send_str);
@@ -193,7 +194,6 @@
 	function initMap() { 
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		getMyLocation();
-		setDummyData();
 	}
 	
 	</script>
