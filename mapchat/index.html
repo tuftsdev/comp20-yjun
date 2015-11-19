@@ -36,7 +36,7 @@
 	function sendLocToDatabase() {
 		/* Posting my data */
 		var request = new XMLHttpRequest();
-		var url = "https://secret-about-box.herokuapp.com/sendLocation";
+		var url = "https://aqueous-beach-4194.herokuapp.com/sendLocation";
 		request.open("POST", url, true);
 		request.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
 		var send_str = "login=CalvinMoseley&lat=" + myLat.toString() + "&lng=" + myLng.toString() + "&message=Don%27t%20you%20want%20to%20be%20my%20Lil%20Pony%3F";
