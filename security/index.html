@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title> Home Page for Assignment 4 </title>
+	<link rel = "stylesheet" href = "style.css" type = "text/css" />
+	<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+
+</head>
+
+
+<body>
+
+<h1>Security Assessment for MapChat Server and Client</h1>
+<p> Prepared by Yennie Jun </p>
+<p> December 1, 2015 </p>
+<p> Comp 20 Assignment 4 </p>
+
+<h2>Introduction</h2>
+
+<h2>Methodology</h2>
+<p>Initially, I used the "black box" method. Eventually I used the "white box" method by looking at the source code. All of my security testing was done by looking at the code and searching for vulnerabilities. </p>
+
+
+
+
+<h2>Abstract of Findings </h2>
+
+<h2> Issues Found </h2>
+	<ol> 
+	<li> <p class = "issue_name">Cross-Site Scripting </p>
+	<ul>
+		<li>Affects GET API (home page)</li>
+		<li>Severity of issue: <span class = "high">high</span>. It is extremely easy for a hacker to inject HTML or JavaScript code by means of the POST API. The hacker can not only change the DOM tree (using HTML) but call malicious JavaScript functions.</li>
+
+		<li>Data submitted via the POST API is not escaped, so it could include JavaScript or HTML injected as part of the message tag. For example, I ran the following: 
+			<p><code> curl --data "login='mchow';lat=32;lng=29; message='&lt;script&gt;alert(You've been hacked!)&lt;/script&gt;'" https://fast-citadel-5360.herokuapp.com/sendLocation </code></p>
+
+			<p>Similarly, one could submit any sort of data as part of the message.</p>
+			<p><code> curl --data "login='mchow';lat=32;lng=29; message='&lt;!--'" https://fast-citadel-5360.herokuapp.com/sendLocation </code></p>
+			<p>This commented out the rest of the entries of the log on the home page. To any other user, then, it looks like the database is missing entires, when in fact, it's just commented out.</p>
+
+			<p> Even more maliciously, I can redirect everything to a whole new webpage just by using cross-site scripting and injecting some very simple JavaScript code, as such. </p>
+			<p><code> curl --data "login='mchow';lat=32;lng=29; message='&lt;script&gt;window.location.replace("http://www.google.com")&lt;/script&gt;'" https://fast-citadel-5360.herokuapp.com/sendLocation </code></p>
+
+		</li>
+
+		<li>Luckily, the only the data submitted as part of "message" tag is affected. The values for the keys "login", "lat", and "lng" are all checked for to make sure that they are valid values. </li>
+
+		<li> Cross-site scripting is happening becasue the website is directly using user input. Hackers can get really malicious ideas - using cross-site scripting, it is not difficult to obtain session information stored in cookies, make modifications to the brwoser's DOM (as I did), or even access the user's geolocation, microphone, or webcam.</li>
+
+		<li>Cross-site Scripting can be resolved by using escape syntax for the part of the HTML document that is receiving untrusted data. In this case, the "message" tag in the POST API. We can filter input by removing or replacing special characters such as <code> &lt; &gt; &quot; &#39; &amp; &#37; &#40; &#41; &#47;</code>. An example JavaScript function to do that would look something like 
+		<pre> <code>str = str.replace(/\&lt;|\&gt;|\&quot;|\&#39;|\&#37;|\&#59;|\&#40;|\&#41;|\&amp;|\&#43;|\&#46;/g,""); </code> </pre></li>
+
+	</ul>
+	</li>
+
+
+	<li> <p class = "issue_name">Something Else</p> 
+		<ul> 
+		</ul>
+	</li>
+
+
+	<li> <p class = "issue_name">Invalid Latitudes and Longitudes</p> 
+		<ul> 
+			<li>Affects connection with client. Issue found in POST and GET/latest.json API</li>
+
+			<li>Severity of issue: <span class = "medium">medium</span>. Malicious attackers can post  invaluid latitudes or longitudes. These values are saved in the database, and the client will have trouble viewing these locations from Google Maps. </li>
+
+			<li>Data submitted via the POST API as part of the lat and lng fields are not checked for valid input. For example, I ran the following:
+				<p><code> curl --data "login='mchow';lat=32333;lng=-393929; message='I'm in outer space!" https://fast-citadel-5360.herokuapp.com/sendLocation </code></p>
+				<p>The result when I open latest.json?login=mchow looks like this:</p>
+				<p><img src = "bad_latlng.png" alt = "Image of bad lat and lng" id = "bad_latlng"></p>
+			</li>
+
+
+			<li>Luckily, it is very easy to fix this problem. In the POST API, an extra simple check can be included to filter out invalid  latitudes and longitudes. It can look something like:
+				<p><code>if &#33;(lat &gt;&#61; -90.0 &amp;&amp; lat &lt;&#61; 90 &amp;&amp; lng &gt;&#61; -180 &amp;&amp; lng &lt;&#61; 180)
+
+				 {response.send('{"error":"Whoops, something is wrong with the database connection"}');}</code></p>
+				 <p>This problem can also be dealt with retroactively, in the GET API. However, the former option is a better one because it takes care of bad output from the start and does not need to waste space storing bad data.</p>
+			</li>
+		</ul>
+	</li>
+
+	<li> <p class = "issue_name">Something Else</p> 
+		<ul> 
+		</ul>
+	</li>
+
+
+	</ol>	
+
+
+
+
+<h2> Conclusion</h2>
+
+
+</body>
+
+
+
+</html>
