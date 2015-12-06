@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Captain's Log</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		/* writing messages in local storage */
+		$(document).ready(function(){
+			for (key in localStorage) {
+				//alert(key);
+				console.log(localStorage.getItem(key));
+				$('#log').prepend('<p>' + key + " - " + localStorage[key] + '</p>\n');
+			}
+		});
+
+
+		$(document).ready(function(){
+			$('#msg').keypress(function(event){
+				var keycode = (event.keyCode ? event.keyCode : event.which);
+				/* If enter is pressed */
+				if (keycode == '13') {
+					var message = $('#msg').val();
+					var timestamp = new Date();
+					localStorage.setItem(timestamp, message);
+					$('#log').prepend('<p>' + timestamp + " - " + message + '</p>\n');
+				}
+			}); 
+		});
+	</script>
+</head>
+
+<body>
+	<h1>Captain's Log</h1>
+	<h3>New entry: <input type="text" id="msg" name="msg" size="30" /></h3>
+	<div id="log"></div>
+</body>
+</html>
