@@ -10,6 +10,19 @@
 	<link rel = "stylesheet" href = "style.css" type = "text/css" />
 	<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 
+	<script type = "text/javascript">
+		/*$(document).ready(function(){
+			$("div#intro p").hide();
+			$("div#intro h2").click(function() {
+				$("div#intro p").slideToggle('slow');
+			});
+			$("div#methodology p").hide();
+			$("div#methodology h2").click(function() {
+				$("div#methodology p").slideToggle('slow');
+			});
+		});*/
+	</script>
+
 </head>
 
 
@@ -33,7 +46,7 @@
 
 <div id = "abstract">
 	<h2>Abstract of Findings </h2>
-		<p>Many of the vulnerabilities stemmed from trusting user input too much. It is never a good idea to put trust into user input. Thus, I have included some suggestions to validate user input.</p>
+		<p>Many of the vulnerabilities stemmed from trusting user input too much. It is never a good idea to put trust into user input. </p>
 </div>
 
 
@@ -62,8 +75,8 @@
 		</li>
 
 		<li>I was also able to inject script from the JavaScript Console through Chrome Developer Tools as well.
-				<p><img src = "client_post1.png" alt = "Image of client posting data from JS console"></p>
-				<p><img src = "client_post2.png" alt = "Image of client posting data from JS console, on GET API" ></p>
+				<p><img src = "client_post1.png" alt = "Image of client posting data from JS console" id = "client_post"></p>
+				<p><img src = "client_post2.png" alt = "Image of client posting data from JS console, on GET API" id = "client_post"></p>
 		</li>
 
 		<li>Luckily, the only the data submitted as part of "message" tag is affected. The values for the keys "login", "lat", and "lng" are all checked for to make sure that they are valid values. </li>
@@ -90,18 +103,17 @@
 			<li>Data submitted via the POST API as part of the lat and lng fields are not checked for valid input. For example, I ran the following:
 				<p><code> curl --data "login='mchow';lat=32333;lng=-393929; message='I'm in outer space!" https://fast-citadel-5360.herokuapp.com/sendLocation </code></p>
 				<p>The result when I open latest.json?login=mchow looks like this:</p>
-				<div id = "bad_latlng"><img src = "bad_latlng.png" alt = "Image of bad lat and lng"/></div>
+				<p><div id = "bad_latlng"><img src = "bad_latlng.png" alt = "Image of bad lat and lng"></div></p>
 			</li>
 
 
 			<li>Obviously, those are not valid latitude and longitude points. Luckily, it is very easy to fix this problem. In the POST API, an extra simple check can be included to filter out invalid  latitudes and longitudes. It can look something like:
-				<div class = "codeblock">
+				<p><div class = "codeblock">
 				<code class = "multiline">
 				if &#33;(lat &gt;&#61; -90.0 &amp;&amp; lat &lt;&#61; 90 &amp;&amp; lng &gt;&#61; -180 &amp;&amp; lng &lt;&#61; 180) { 
 					<br>&nbsp;&nbsp;&nbsp;response.send('{"error":"Whoops, something is wrong with the database connection"}');  
 					<br>
-					&nbsp;}</code></div>
-
+					&nbsp;}</code></div></p>
 
 
 				 <p>This problem can also be dealt with retroactively, in the GET API. It could also possibly be dealt with in the client-side code. However, the first option (checking for valid values wiht POST) is the best one because it takes care of bad output from the start and does not need to waste space storing bad data.</p>
@@ -121,7 +133,7 @@
 				<p><img src = "cors.png" alt = "Image of cors hack" id = "cors"></p>
 			</li>
 
-			<li>This is a pretty easy fix. Instead of using the wildcard * to allow all origins, we can validate the response. For example, we can use the withCredentials property on XMLHttpRequest to add some form of authentication.</li>
+			<li>This is a pretty easy fix. Instead of using the wildcard * to allow all origins, only certain origins can be specified. In this case, we can specify the herokuapp server.</li>
 
 		</ul>
 	</li>
@@ -133,14 +145,28 @@
 			
 			<li>Severity of issue: <span class = "low">low</span>. Using tools such as Chrome Developer Tools, users can extract data that the client perhaps did not wish to share through the JavaScript console, such as the client's location or contentString. Although the location is displayed on the map anyways, this may be information that the client wishes to keep private. </li>
 			
-			<li>In the client-side JavaScript code, variables such as MyLocation and contentString are kept as global variables. Thus, the information kept in these variables can be accessed from the JavaScript Console, which can be opened on nearly every browser.
-				<div id = "personal_exposed"><img src = "personal_exposed.png" alt = "Image of personal info exposed at client-side"></div>
-			</li>
+			<li>In the client-side JavaScript code, variables such as MyLocation and contentString are kept as global variables. Thus, the information kept in these variables can be accessed from the JavaScript Console, which can be opened on nearly every browser. </li>
+				<p><div id = "personal_exposed"><img src = "personal_exposed.png" alt = "Image of personal info exposed at client-side"></div></p>
 			
 			<li>The fixes for this problem can be optional, depending on if this problem is even viewed as a vulnerability or not. If this project is going to be built on and at some point this information needs to be kept private, it is a good idea to hide the information from any curious users. It can be easily fixed by making pertinent data not global variables. Again, this may not be considered a security vulnearbility at this stage of the project. A more pertinent threat may arise if this project is continued.</li>
 
 		</ul>
 	</li>
+
+
+
+	<li> <p class = "issue_name">Issue</p> 
+		<ul> 
+			<li></li>
+
+			<li></li>
+
+			<li></li>
+		</ul>
+	</li>
+
+
+
 
 	</ol>	
 
@@ -150,15 +176,17 @@
 <div id = "conclusion"><h2> Conclusion</h2>
 <p>Multiple security vulnerabilities exist with this version of MapChat. It is not difficult for malicious attackers to insert unwanted data into the database or render the webpage unusable for other users. Luckily, fixing these simple vulnerabilities will not cost too much. It just involves being more careful with allowing specific, certain data.</p>
 
-<p>However, there are already several simple validation of user input in place. These validations did not allow me to perform certain attacks. For example, the longitude and latitude keys in the server-side are validated to ensure that they are at least numbers, and the login is always checked to make sure that it is included in the pre-defined list of approved logins. I was unable to perform a query injection on the database through the latest.json API using Mongo keywords such as [$ne] because the these fields were already validated as well.</p>
-
-<p>An important vulnerability I did not mention is that even with the correct specifications, any user can submit their location, and everyone can view everyone else's "check-ins". Therefore, I think it may be a good long-term goal to instantiate some way to authenticate and verify users from an allowed list of users. That way, we can guarantee privacy to users if they desire it.</p>
+<p>An important vulnerability I did not mention is that even with the correct specifications, any user can submit their location, and everyone can view everyone else's "check-ins". Therefore, I think it may be a good long-term goal to instantiate some way to check and verify users from an allowed list of users (perhaps authentication of some sort). That way, unwanted data need not be sent to the database using tools as simple as curl and the JavaScript Console.</p>
 
 
 </div>
 
 
 </body>
+
+
+
+<!--Good: no extraneous data passed. like if i pass other tags in the post, it won't work-->
 
 
 </html>
