@@ -2,7 +2,6 @@ h3 {
 	border-bottom: 1px solid #cccccc;
 	padding-bottom: 30px;
 	font-weight: 500;
-
 }
 
 .codeblock {
@@ -11,7 +10,6 @@ h3 {
 	display: inline-block;
 	padding: 20px;
 }
-
 
 .multiline {
 	 margin: 0 2px;
@@ -76,12 +74,4 @@ img {
 .low {
 	font-weight: bold;
 	color: #00FFFF;
-}
-
-div#intro {
-
-}
-
-div#popup {
-
 }
