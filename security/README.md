@@ -1,9 +1,9 @@
 Security Assesment of MapChat
- ## Yennie Jun
- ## December 2016
+  Yennie Jun
+  December 2016
  
- # Comp 20 Assignment 4
- # Overview
+ Comp 20 Assignment 4
+ Overview
  Explores vulnerabilities found in MapChat server of classmate. 
 
 I spent around 5-10 hours on this assignment.
