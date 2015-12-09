@@ -1,0 +1,87 @@
+h3 {
+	border-bottom: 1px solid #cccccc;
+	padding-bottom: 30px;
+	font-weight: 500;
+
+}
+
+.codeblock {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	display: inline-block;
+	padding: 20px;
+}
+
+
+.multiline {
+	 margin: 0 2px;
+	 padding: 0 3px;
+	 white-space: nowrap;
+	 background-color: #f8f8f8;
+	 border: none;
+}
+
+body {
+	font-family: 'PT Sans', sans-serif;
+	padding: 30px;
+}
+
+h2 {
+	text-decoration: underline;
+}
+
+code {
+  margin: 10px;
+  padding: 10px;
+  white-space: nowrap;
+  border: 1px solid #cccccc;
+  background-color: #f8f8f8;
+  border-radius: 3px; 
+  font-size: 15px;
+
+}
+
+
+.issue_name {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+li {
+	margin-top: 15px;
+	font-size: 17px;
+
+}
+
+p {
+	margin-top: 30px;
+	font-size: 17px;
+}
+
+img {
+	border: 2px solid #cccccc;
+ 	width: fit-content;
+}
+
+.high {
+	font-weight: bold;
+	color: red;
+}
+
+.medium {
+	font-weight: bold;
+	color: #00ff00;
+}
+
+.low {
+	font-weight: bold;
+	color: #00FFFF;
+}
+
+div#intro {
+
+}
+
+div#popup {
+
+}
