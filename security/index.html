@@ -61,10 +61,6 @@
 
 		</li>
 
-		<li>I was also able to inject script from the JavaScript Console through Chrome Developer Tools as well.
-				<p><img src = "client_post1.png" alt = "Image of client posting data from JS console"></p>
-				<p><img src = "client_post2.png" alt = "Image of client posting data from JS console, on GET API" ></p>
-		</li>
 
 		<li>Luckily, the only the data submitted as part of "message" tag is affected. The values for the keys "login", "lat", and "lng" are all checked for to make sure that they are valid values. </li>
 
@@ -118,7 +114,7 @@
 		</ul>
 	</li>
 
-	<li> <p class = "issue_name">CORS</p> 
+	<li> <p class = "issue_name">Cross-Origin Resource Sharing (CORS)</p> 
 		<ul> 
 			<li>Affects posting of data from malicious or unwanted origins. Issue found in POST and GET APIs.</li>
 
@@ -145,8 +141,11 @@
 			<li>In the client-side JavaScript code, variables such as MyLocation and contentString are kept as global variables. Thus, the information kept in these variables can be accessed from the JavaScript Console, which can be opened on nearly every browser.
 				<div id = "personal_exposed"><img src = "personal_exposed.png" alt = "Image of personal info exposed at client-side"></div>
 			</li>
-			
+
 			<li>The fixes for this problem can be optional, depending on if this problem is even viewed as a vulnerability or not. If this project is going to be built on and at some point this information needs to be kept private, it is a good idea to hide the information from any curious users. It can be easily fixed by making pertinent data not global variables. Again, this may not be considered a security vulnearbility at this stage of the project. A more pertinent threat may arise if this project is continued.</li>
+
+			<li>In general, this vulnerability can be a higher issue if personal information is valued more. Anyone can view all logins from the GET API. Also, at present, anyone who knows the whitelist of allowed usernames can checkin. To fix this, we can add some sort of authentication (password/username) to allow only certain viewers and users.</li>
+
 
 		</ul>
 	</li>
