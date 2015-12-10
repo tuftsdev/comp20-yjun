@@ -7,7 +7,7 @@ h3 {
 .codeblock {
 	background-color: #f8f8f8;
 	border: 1px solid #cccccc;
-	display: inline-block;
+	display: block;
 	padding: 20px;
 }
 

@@ -75,10 +75,10 @@
 				str = str.replace(/&amp;/g, "&amp;amp;");
 				<br>str = str.replace(/&gt;/g, "&amp;gt;"); 
 				<br>str = str.replace(/&lt;/g, "&amp;lt;");
-		</code></div></li>
+		</code></div>
 
 		<p>We can encode all special characters into HTML. </p>
-
+		</li>
 	</ul>
 	</li>
 
@@ -99,13 +99,13 @@
 
 
 			<li>Obviously, those are not valid latitude and longitude points. Luckily, it is very easy to fix this problem. In the POST API, an extra simple check can be included to filter out invalid  latitudes and longitudes. It can look something like:
-				
-				<p><div class = "codeblock">
+			<p></p>
+			<div class = "codeblock">
 				<code class = "multiline">
 				if &#33;(lat &gt;&#61; -90.0 &amp;&amp; lat &lt;&#61; 90 &amp;&amp; lng &gt;&#61; -180 &amp;&amp; lng &lt;&#61; 180) { 
 					<br>&nbsp;&nbsp;&nbsp;response.send('{"error":"Whoops, something is wrong with the database connection"}');  
 					<br>
-					&nbsp;}</code></div></p>
+					&nbsp;}</code></div>
 
 
 
@@ -160,7 +160,7 @@
 
 <p>However, there are already several simple validation of user input in place. These validations did not allow me to perform certain attacks. For example, the longitude and latitude keys in the server-side are validated to ensure that they are at least numbers, and the login is always checked to make sure that it is included in the pre-defined list of approved logins. I was unable to perform a query injection on the database through the latest.json API using Mongo keywords such as [$ne] because the these fields were already validated as well.</p>
 
-<p>An important vulnerability I did not mention is that even with the correct specifications, any user can submit their location, and everyone can view everyone else's "check-ins". Therefore, I think it may be a good long-term goal to instantiate some way to authenticate and verify users from an allowed list of users. That way, we can guarantee privacy to users if they desire it.</p>
+<p>An important vulnerability is that even with the correct specifications, any user can submit their location, and everyone can view everyone else's "check-ins". Therefore, I think it may be a good long-term goal to instantiate some way to authenticate and verify users from an allowed list of users. That way, we can guarantee privacy to users if they desire it.</p>
 
 
 </div>
