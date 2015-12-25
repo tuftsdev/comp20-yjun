@@ -1,0 +1,74 @@
+body {
+	font-family: 'Shadows Into Light Two', cursive;	color: DarkSlateBlue;
+
+}
+
+#header {
+	text-align: center;	
+	padding: 5px;
+	background-color: #B3B3D7;
+	margin: .4em;
+}
+
+#links {
+	display: inline-block;
+	line-height:30px;
+    background-color:#000078;
+    height:1000px;
+    width:100px;
+    float:left;
+    padding:5px;
+    margin: .4em;
+    text-indent: 1em;
+    text-align: left;
+
+}
+
+
+#section {
+	display: inline-block;
+	background-color: #D1CAB0;
+	height: 1000px;
+	width: 84.8%;
+    padding:5px;
+    margin: .4em;
+
+}
+
+
+h1 {
+	text-align: left;
+	text-indent: 10px;
+	font-size: 2em;
+	color: white;
+}
+
+img {
+	display: block;
+	width: 50%;
+
+}
+
+h2 {
+	color: black;
+	font-size: 1.3em;
+
+}
+
+a:hover{
+	font-weight:bold;
+	text-decoration:none;
+	color:#AA0078;
+}
+
+a:visited{
+	color:#D1CAB0;
+}
+
+#sectionheader {
+	font-size: 2em;
+}
+
+h3 {
+	color: black;
+}

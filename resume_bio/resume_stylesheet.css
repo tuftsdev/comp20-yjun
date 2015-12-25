@@ -1,0 +1,125 @@
+body{
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: 'Amatic SC', cursive;
+}
+
+#header {
+    border-radius:1em;
+    background-color: white;
+    display: inline-block;
+    font-variant: small-caps;
+    margin-top: 5px;
+    margin-bottom: 1em;
+    text-align:center;
+    z-index:1;
+    width:98%;
+    height: 98%;
+    
+}
+
+h1 {
+    color: black;
+    font-family: 'Amatic SC', cursive;
+    font-size: 3em;
+    text-align: center;
+}
+
+
+.page {
+    margin-top: 150px;
+    padding: 3em;
+    background-color: white;
+    border: groove;
+    border-color: indigo;
+    display: inline-block;
+    margin-bottom: 4em;
+}
+
+.head {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-right: 1em;
+    background-position: center;
+    padding: .2em;
+    text-shadow: -1px -1px #aa3030;
+}
+
+.school{
+    list-style-position: inside;
+    text-align: left;
+    text-indent: 3.1em;
+    font-variant: small-caps;
+    font-size: 2.5em;
+    color: black;
+}
+
+.honors{
+    font-size: 2.2em;
+    text-indent: 6em;
+
+}
+
+.courses {
+    font-size: 1.5em;
+    text-indent: 10em;
+    list-style-position: inside;
+}
+
+.skills{
+    font-size:2.2em;
+    list-style-position: inside;
+    text-indent: 4em;
+
+}
+
+.jobtitle{
+    font-size:2.2em;
+    text-decoration: underline;
+    text-indent: 4em;
+    list-style-position: inside;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+}
+
+.job_desc{
+    font-size:1.8em;
+    text-indent: 8em;
+    list-style-position: inside;
+}
+
+.job_date {
+    font-size: 1.8em;
+    text-indent: 8em;
+}
+
+.language {
+    font-size:2.2em;
+    text-indent: 4em;
+
+}
+
+.activity {
+    font-size:2.2em;
+    list-style-position: inside;
+    text-indent: 4em;   
+}
+
+a:link{
+    color: black;
+}
+
+a:visited{
+    color: black;
+}
+
+a:hover{
+    color: mediumspringgreen;
+}

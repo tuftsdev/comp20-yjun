@@ -1,0 +1,54 @@
+head {
+	background-color: MidnightBlue;
+
+
+}
+
+#title {
+	background-color: #336666;
+	color: white;
+	display: block;
+	font-size: 39px;
+    font-family: 'Indie Flower', cursive;
+	padding: 1em;
+	text-align: center;
+
+}
+
+#sidepanel {
+	background-color: #CCFFFF;
+	height:1000px;
+    width:100px;
+    float: left;
+    text-align: center;
+    text-decoration: bold;
+    font-family: 'Indie Flower', cursive;
+    font-size: 30px;
+    margin: 1em;
+    padding: .5em;
+}
+
+
+#biograph{
+	background-color: #333366;
+	color: white;
+	display: inline-block;
+	font-size: 24px;
+	font-family: 'Indie Flower', cursive;
+	margin: 1em;
+	padding: .5em;
+	height:1000px;
+	width: 70%;
+	}
+
+a:link {
+	color: #336666;
+}
+
+a:visited{
+	color: #333366;
+}
+
+a:hover {
+	color: white;
+}
